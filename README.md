@@ -98,4 +98,18 @@ When searching this IP address (45.125.66.32,5.252.153.241) on OTX AlienVault, w
 
 So, the IP address of the C2 server is: 45.125.66.32,5.252.153.241
 
-let dig deepr
+We have finished answering the questions.
+but I noticed something interesting during the analysis.
+
+When we search for HTTP traffic, we can see that a file is downloaded from the C2 server. Based on our analysis, we can infer that this is a payload that is Base64 encoded and is immediately executed using PowerShell, as we observe the pattern:
+
+iex (FromBase64String(...))
+
+This confirms that the attacker is dynamically decoding and executing malicious code in memory.
+<img width="1920" height="947" alt="Screenshot_2026-04-14_04_37_58" src="https://github.com/user-attachments/assets/c8957e1f-56ad-4ab4-9913-8c5f135bf0f0" />
+
+After some time, we also observe a GET request, which indicates that another file is being downloaded from the same C2 server.
+
+<img width="1920" height="947" alt="Screenshot_2026-04-14_04_37_17" src="https://github.com/user-attachments/assets/3e123020-9ac5-4601-be6d-ce612146e112" />
+
+AI were used to understand and analyzing the behavior of these files.
