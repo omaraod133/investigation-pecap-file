@@ -75,10 +75,9 @@ Here, we will add server_name as a column
 
 <img width="1920" height="947" alt="Screenshot_2026-04-14_02_47_45" src="https://github.com/user-attachments/assets/f1dd44a6-49a0-4772-82e6-f589329b5f1f" />
 Now we can search for suspicious domain names.
-Since the question mentions a fake Google Authenticator page, I will filter for server names that contain the word "google".
 
-<img width="1920" height="947" alt="Screenshot_2026-04-14_02_55_50" src="https://github.com/user-attachments/assets/9fa179df-809d-4f8b-a6d1-f2a868335d91" />
-
+<img width="1920" height="911" alt="Screenshot_2026-04-14_04_04_46" src="https://github.com/user-attachments/assets/f9c33d78-1b30-4281-ad32-39ac65b20365" />
+here we see these suspicious domain
 Next, I checked these domains using VirusTotal to see if they are suspicious.
 
 <img width="1918" height="850" alt="{4BACFD79-4ACA-41B7-9712-E4E5D9E3178F}" src="https://github.com/user-attachments/assets/70fec421-a366-4ab7-ac75-bc745fd4c66e" />
@@ -89,10 +88,14 @@ The likely domain name for the fake Google Authenticator page is:
 #### - What are the IP addresses used for C2 servers for this infection?
 We will go back to the TLS protocol to check for any unusual domain names.
 I found something interesting: a server using an IP address as a domain name, which may indicate the attacker is trying to bypass DNS filtering.
+Additionally, there are repeated requests sent every 5 seconds, which is a strong indicator of beaconing behavior commonly associated with C2 (Command and Control) communication.
 
-When searching this IP address on OTX AlienVault, we can see under Related Pulses that there are multiple reports associated with it.
+<img width="1920" height="947" alt="Screenshot_2026-04-14_04_13_41" src="https://github.com/user-attachments/assets/27bd91c5-8362-46b8-8bfb-40df2140f315" />
 
+When searching this IP address (45.125.66.32,5.252.153.241) on OTX AlienVault, we can see under Related Pulses that there are multiple reports associated with it.
 
 <img width="1915" height="855" alt="{A68CB8E6-CBE0-455A-8B10-3AB5A1E39C57}" src="https://github.com/user-attachments/assets/3d382430-a30b-4556-b8ca-8f217ef65600" />
 
-So, the IP address of the C2 server is: 45.125.66.32
+So, the IP address of the C2 server is: 45.125.66.32,5.252.153.241
+
+let dig deepr
